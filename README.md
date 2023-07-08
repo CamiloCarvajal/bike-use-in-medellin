@@ -1,3 +1,14 @@
+
+This project is created to get information about people that use the bicycle like a mean of transport in Medellín city.
+
+The data was taken from medata.gov.co.
+Complete link: http://medata.gov.co/dataset/caracterizaci%C3%B3n-y-uso-de-la-bicicleta
+
+
+
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
