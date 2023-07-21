@@ -1,5 +1,6 @@
-"use client"; 
+"use client";
 
+import { groupByAge } from '../../src/tools/group';
 import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -24,46 +25,53 @@ ChartJS.register(
     Filler
 );
 
-var beneficios = [72, 56, 20, 36, 80, 40, 30, -20, 25, 30, 12, 60];
-var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-
 var misoptions = {
-    responsive : true,
-    animation : false,
-    plugins : {
-        legend : {
-            display : false
+    responsive: true,
+    animation: true,
+    plugins: {
+        legend: {
+            display: false,
+            position: 'left',
+
+        },
+        title: {
+            text: 'Uso de la bicicleta en Medellín por edad.',
+            display: true
         }
     },
-    scales : {
-        y : {
-            min : -25,
-            max : 100
+    scales: {
+        y: {
+            min: 0,
+            max: 100
         },
         x: {
-            ticks: { color: 'rgba(0, 220, 195)'}
+            ticks: { color: 'rgba(0, 220, 195)' }
         }
     }
 };
 
-var midata = {
-    labels: meses,
-    datasets: [
-        {
-            label: 'Beneficios',
-            data: beneficios,
-            backgroundColor: 'rgba(0, 220, 195, 0.5)'
-        }
-    ]
-};
 
-export default function Ages({data}) {
+
+export default function Ages({ data }) {
+    const groupByAgeResult = groupByAge(data)
+    const ageTags = Object.keys(groupByAgeResult)
+    const ageCount = Object.values(groupByAgeResult)
+
+    var midata = {
+        labels: ageTags,
+        datasets: [
+            {
+                label: 'Total',
+                data: ageCount,
+                backgroundColor: 'rgba(0, 220, 195, 0.5)'
+            }
+        ]
+    };
 
     return (
         <div>
-            <h2>{data['0'].name}</h2>
             <Bar data={midata} options={misoptions} />
         </div>
     )
-    
+
 }

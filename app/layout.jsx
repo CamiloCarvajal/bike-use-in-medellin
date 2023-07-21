@@ -6,10 +6,11 @@ export default function RootLayout({ children }) {
             </head>
             <body>
                 <header>
-                    <h3>Estadisticas del uso de la bicicleta en Medellin</h3>
+                    <h3>Estadísticas del uso de la bicicleta en Medellín</h3>
                     <ul>
                         <li>Acerca de</li>
-                        <li>Grafico por edades</li>
+                        <li><a href="/edad">Grafico por edades</a></li>
+                        <li><a href="/genero">Grafico por Genero</a></li>
                     </ul>
                 </header>
                 {children}
